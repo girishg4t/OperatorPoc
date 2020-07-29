@@ -1,0 +1,24 @@
+# permissions for end users to edit configmonitors.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: configmonitor-editor-role
+rules:
+- apiGroups:
+  - cache.example.com
+  resources:
+  - configmonitors
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - cache.example.com
+  resources:
+  - configmonitors/status
+  verbs:
+  - get

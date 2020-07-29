@@ -1,0 +1,8 @@
+apiVersion: cache.example.com/v1alpha1
+kind: ConfigMonitor
+metadata:
+  name: configmonitor-sample
+spec:
+  configMap: configmonitor-config
+  podSelector:
+    app: frontend

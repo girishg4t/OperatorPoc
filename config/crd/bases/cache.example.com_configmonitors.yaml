@@ -1,0 +1,64 @@
+
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.2.4
+  creationTimestamp: null
+  name: configmonitors.cache.example.com
+spec:
+  group: cache.example.com
+  names:
+    kind: ConfigMonitor
+    listKind: ConfigMonitorList
+    plural: configmonitors
+    singular: configmonitor
+  scope: Namespaced
+  subresources:
+    status: {}
+  validation:
+    openAPIV3Schema:
+      description: ConfigMonitor is the Schema for the configmonitors API
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          description: ConfigMonitorSpec defines the desired state of ConfigMonitor
+          properties:
+            configMap:
+              description: Foo is an example field of ConfigMonitor. Edit ConfigMonitor_types.go
+                to remove/update
+              type: string
+            podSelector:
+              description: PodSelector to select the pod
+              properties:
+                app:
+                  type: string
+              type: object
+          type: object
+        status:
+          description: ConfigMonitorStatus defines the observed state of ConfigMonitor
+          type: object
+      type: object
+  version: v1alpha1
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
